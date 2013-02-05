@@ -7,21 +7,24 @@ int main(int argc, char * argv[])
   // itk::MultiThreader::SetGlobalMaximumNumberOfThreads(1);
   const unsigned dim = 2;
   typedef itk::Image<unsigned char, dim> ImageType;
-  ImageType::Pointer raw = readIm<ImageType>(argv[1]);
+  ImageType::Pointer raw = readIm<ImageType>(argv[3]);
+
+  int r = atoi(argv[1]);
+  int count = atoi(argv[2]);
 
   typedef itk::FlatStructuringElement<dim> FlatKernelType;
 
   typedef itk::OpenBunImageFilter<ImageType, FlatKernelType> OpenBunType;
 
   FlatKernelType::RadiusType rad;
-  rad.Fill(19);
+  rad.Fill(r);
 
-  FlatKernelType kernel = FlatKernelType::Polygon(rad, 12);
+  FlatKernelType kernel = FlatKernelType::Polygon(rad, count);
 
   OpenBunType::Pointer cb = OpenBunType::New();
   cb->SetInput(raw);
   cb->SetKernel(kernel);
 
-  writeIm<ImageType>(cb->GetOutput(), argv[2]);
+  writeIm<ImageType>(cb->GetOutput(), argv[4]);
   return EXIT_SUCCESS;
 }

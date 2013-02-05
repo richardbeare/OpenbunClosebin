@@ -33,6 +33,13 @@ namespace itk
 * dark lines or surfaces. This filter removes regions based on their
 * length, rather than length and width, as with square or rectangular
 * structuring elements.
+*
+* This class uses the FlatStructuringElement, although not in the
+* way it was intended. When using the polygon structuring element, the
+* radius ends up corresponding to the length of the line elements. The
+* polygon structuring element is simply a convenient container for a
+* set of oriented lines.
+*
 * \ingroup ITKMathematicalMorphology
 * \author Richard Beare, Richard.Beare@ieee.org.
 */
