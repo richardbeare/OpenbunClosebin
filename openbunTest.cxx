@@ -4,11 +4,11 @@
 
 int main(int argc, char * argv[])
 {
-  // itk::MultiThreader::SetGlobalMaximumNumberOfThreads(1);
   const unsigned dim = 2;
   typedef itk::Image<unsigned char, dim> ImageType;
   ImageType::Pointer raw = readIm<ImageType>(argv[3]);
 
+  // r is the line length, count the number of lines.
   int r = atoi(argv[1]);
   int count = atoi(argv[2]);
 
@@ -19,6 +19,9 @@ int main(int argc, char * argv[])
   FlatKernelType::RadiusType rad;
   rad.Fill(r);
 
+  // create a polygon flat structuring element, which is a collection
+  // of oriented lines. A box also works, but will only have lines
+  // parallel to axes. 
   FlatKernelType kernel = FlatKernelType::Polygon(rad, count);
 
   OpenBunType::Pointer cb = OpenBunType::New();

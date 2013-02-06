@@ -92,11 +92,11 @@ ENDIF(BUILD_TESTING)
 
 ADD_TEST(testOpen ${TEST_COMMAND}
    openbunTest 21 6 ${INPUT_IMAGE} circlineOpen.png
-   #--compare circlineOpen.png ${CMAKE_CURRENT_SOURCE_DIR}/images/baseline/circlineOpen.png
+   --compare circlineOpen.png ${CMAKE_CURRENT_SOURCE_DIR}/images/baseline/circlineOpen.png
 )
 
 
 ADD_TEST(testClose ${TEST_COMMAND}
    closebinTest 21 6 ${INPUT_IMAGE_INV} circlineClose.png
-   #--compare circlineClose.png ${CMAKE_CURRENT_SOURCE_DIR}/images/baseline/circlineClose.png
+   --compare circlineClose.png ${CMAKE_CURRENT_SOURCE_DIR}/images/baseline/circlineClose.png
 )
